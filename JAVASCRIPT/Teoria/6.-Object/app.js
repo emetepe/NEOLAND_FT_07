@@ -15,6 +15,13 @@ alumno.name = "Igor";
 console.log(alumno);
 
 
+///! voy a asignar el valor de otro obvjeto a uno nuevo
+console.log("💌-------------------")
+let federicoAlumno = alumno;
+federicoAlumno.name = "Federico"
+console.log("alumno", alumno)
+console.log("fede", federicoAlumno);
+console.log("💌-------------------");
 
 //! copia del objeto original  ------SPREAD OPERATOR ES6
 
