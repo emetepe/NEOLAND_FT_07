@@ -60,7 +60,6 @@ numberRandomTwo.sort((a, b) => b - a);
 console.log(numberRandomTwo);
 
 // 7) splice  ---- modifica el array
-
 const show = ["25", "Lost", "Ana y los 7 ", "los 100"];
 
 const result = show.splice(1, 2, "Pokemon");
