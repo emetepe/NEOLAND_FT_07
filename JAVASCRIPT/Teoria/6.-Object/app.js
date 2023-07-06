@@ -25,7 +25,7 @@ console.log("💌-------------------");
 
 //! copia del objeto original  ------SPREAD OPERATOR ES6
 
-const copyAlumno = {...alumno, edad: 45 }
+const copyAlumno = { ...alumno, edad: 45 }
 copyAlumno.name = "Ruben"
 console.log("🚀 ~ file: app.js:23 ~ copyAlumno:", copyAlumno)
 
@@ -35,12 +35,34 @@ console.log("🚀 ~ file: app.js:23 ~ copyAlumno:", copyAlumno)
 const keysAlumnos = Object.keys(copyAlumno)
 
 
-for (let i= 0; i< keysAlumnos.length; i++){
+for (let i = 0; i < keysAlumnos.length; i++) {
     console.log(`Esta clave ${keysAlumnos[i]} tiene el valor  ${copyAlumno[keysAlumnos[i]]}:`);
 }
 
+
+//! sacar los valores
 const valuesArray = Object.values(copyAlumno);
 
+
+
+//! hacer un array con un object-position: 
+
+const person = {
+    name: "Pedro",
+    adress: "Madrid",
+    age: 30
+}
+console.log("--------------------")
+const arrayObject = Object.entries(person)
+console.log("🚀 ~ file: app.js:57 ~ arrayObject:", arrayObject)
+console.log("--------------------")
+
+//! delete de una clave con su valor 
+
+delete person.age
+console.log("--------------------")
+console.log(person)
+console.log("--------------------")
 
 
 //! ------ teorio de los arrays paralelos----------------------------- 
@@ -50,9 +72,11 @@ console.log(valuesArray)
 console.log(keysAlumnos)
 
 
-for ( let i=0; i< valuesArray.length; i++ ){
+for (let i = 0; i < valuesArray.length; i++) {
     console.log(`Esta clave ${keysAlumnos[i]} tiene el valor  ${valuesArray[i]}:`);
 }
+
+
 
 
 
