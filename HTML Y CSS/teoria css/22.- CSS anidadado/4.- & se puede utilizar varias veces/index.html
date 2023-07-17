@@ -9,8 +9,15 @@
   <body>
     <div class="foo">
       Este es el texto de foo
-      <div class="bar">Este es el texto de bar</div>
-      <div class="baz">Este es el texto de baz</div>
+      <div class="bar">
+        <div class="foo">
+          <div class="baz">
+            <div class="foo">
+              <div class="qux">Este es el texto de qux y debería ser rojo</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
