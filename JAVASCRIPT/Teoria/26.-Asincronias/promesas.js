@@ -28,3 +28,4 @@ init()
 
 //! ----------------------------- una resupuesta correcta: la data la tiene directamente accesible --> es 200 --> res.data
 //! ----------------------------- cuando es un 400 o 500 es un error para ver la data nos metemos a la res.response.data
+
