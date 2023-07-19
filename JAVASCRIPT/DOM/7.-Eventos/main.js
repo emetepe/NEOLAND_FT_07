@@ -17,14 +17,31 @@ const init = () => {
 init();
 
 const h2 = () => {
-  const title = (document.createElement("h2").innerText = "Hola");
-  const box = document.getElementsByClassName("box");
+  const title = document.createElement("h2");
+  title.innerText = "Hola";
+  const box = document.querySelector(".box");
+  console.log(box);
   box.appendChild(title);
 };
 
-const listener = () => {
+const listenerClick = () => {
   const button = document.querySelector("button");
   button.addEventListener("click", () => h2());
 };
 
-listener();
+listenerClick();
+
+const listenerMoud = () => {
+  const button = document.querySelector("button");
+  button.addEventListener("mouseenter", () => console.log("entro"));
+  button.addEventListener("mouseleave", () => console.log("salgo"));
+};
+
+listenerMoud();
+
+const listenerInput = () => {
+  const input = document.querySelector("input");
+  input.addEventListener("input", (evento) => console.log(evento.target.value));
+};
+
+listenerInput();
