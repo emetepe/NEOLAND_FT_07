@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  & main {
+    padding-top: 20vh;
+    min-height: 200vh;
+    padding-bottom: 10vh;
+  }
+
+  #app {
+    min-height: 100vh;
+  }
+}
