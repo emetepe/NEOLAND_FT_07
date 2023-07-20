@@ -1,16 +1,18 @@
-import { printTemplateDashboard } from "../pages";
+import { getUser } from "../global/state/globalState";
+import { Login, PrintPokemonPage, printTemplateDashboard } from "../pages";
 
 //! ----------------------------------------------------------------------------------------------------------------------
 //? ------------------------------------- CONTROLADOR DE LO QUE SE RENDERIZA EN CADA MOMENTO------------------------------
 //! ----------------------------------------------------------------------------------------------------------------------
 
 export const initControler = (pagesRender) => {
+  console.log("soy el user", getUser().name);
   switch (pagesRender) {
     case undefined:
-      return localStorage.getItem("user") ? "Dashboard()" : "Login()";
+      localStorage.getItem(getUser().name) ? printTemplateDashboard() : Login();
       break;
     case "Pokemon":
-      "Pokemon()";
+      PrintPokemonPage();
       break;
     case "Dashboard":
       printTemplateDashboard();
@@ -19,7 +21,7 @@ export const initControler = (pagesRender) => {
       "Topo()";
       break;
     case "Login":
-      "Login()";
+      Login();
       break;
     case "Memory":
       "Memory()";

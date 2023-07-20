@@ -1,10 +1,11 @@
+import { initControler } from "../../utils";
 import "./Dashboard.css";
 
 const template = () => `
   <div id="containerDashboard">
     <ul>
       <li>
-        <figure>
+        <figure id="navigatePokemon">
           <img
             src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761508/pngwing.com_r0hr9b.png"
             alt="go to page pokemon"
@@ -34,8 +35,15 @@ const template = () => `
   </div>
 `;
 
-const addEventListeners = () => {};
+const addEventListeners = () => {
+  const navigatePokemon = document.getElementById("navigatePokemon");
+  navigatePokemon.addEventListener("click", () => {
+    initControler("Pokemon");
+  });
+};
 
 export const printTemplateDashboard = () => {
   document.querySelector("main").innerHTML = template();
+  document.querySelector("nav").style.display = "flex";
+  addEventListeners();
 };

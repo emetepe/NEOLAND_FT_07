@@ -1,3 +1,5 @@
+import { getUser } from "../../global/state/globalState";
+import { changeColorRGB } from "../../utils";
 import { initControler } from "../../utils/route";
 import "./Header.css";
 
@@ -34,7 +36,8 @@ const addListeners = () => {
   // evento click del boton de cambio de color
   const changeColor = document.getElementById("changeColor");
   changeColor.addEventListener("click", (e) => {
-    console.log(e.target.id);
+    const color = changeColorRGB();
+    document.body.style.background = color;
   });
 
   // evento click del boton que nos lleva a los juegos
@@ -46,7 +49,15 @@ const addListeners = () => {
   // evento del logout
   const buttonLogout = document.getElementById("buttonLogout");
   buttonLogout.addEventListener("click", (e) => {
-    console.log(e);
+    const userState = getUser().name;
+    const currentUser = localStorage.getItem(userState);
+    const parseCurrentUser = JSON.parse(currentUser);
+    const updateUser = { ...parseCurrentUser, token: false };
+    const stringUpdateUser = JSON.stringify(updateUser);
+    localStorage.removeItem(userState);
+    sessionStorage.removeItem("currentUser");
+    localStorage.setItem(userState, stringUpdateUser);
+    initControler("Login");
   });
 };
 
