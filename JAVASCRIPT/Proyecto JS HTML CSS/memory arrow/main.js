@@ -1,5 +1,5 @@
 import "./style.css";
-
+import JSConfetti from "js-confetti";
 const template = () => `
   <div id="time"></div>
  <section class="memory-game">
@@ -157,7 +157,19 @@ const checkInterval = () => {
     <h4>${ok === 6 ? "Has ganado🎉" : "Has perdido 💥"}</h4>
     <h6>Movimientos: ${contador}</h6>
     <button id="resetButton">RESET</button></div>`;
+    //! --------------------confeti -----------------------
+    if (ok === 6) {
+      const jsConfetti = new JSConfetti();
 
+      jsConfetti.addConfetti();
+    } else {
+      const jsConfetti = new JSConfetti();
+
+      jsConfetti.addConfetti({
+        emojis: ["😪"],
+      });
+    }
+    //!---------------------------------------------------------------------
     memory.innerHTML = "";
     memory.innerHTML = templateEnd;
     const reset = document.querySelector("#resetButton");
