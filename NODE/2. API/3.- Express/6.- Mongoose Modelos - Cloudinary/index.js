@@ -23,6 +23,10 @@ const app = express();
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: false }));
 
+//! --------------------- RUTAS---------------------------------
+const CharacterRoutes = require("./src/api/routes/Character.routes");
+app.use("/api/v1/characters/", CharacterRoutes);
+
 //! ---------------------- crear error cuando la url no se encuentre --LA ROUTA NO SE ENCUENTRE ---
 app.use("*", (req, res, next) => {
   const error = new Error("Route not found");
@@ -39,7 +43,7 @@ app.use((error, req, res) => {
 
 //! ---------------------- escuchamos en el puerto el servidor
 // ------> x-powered-by revela las tecnologias en el backend
-app.disable("x-powered-by");
+
 app.listen(PORT, () => {
   console.log(`server listening on port http://localhost:${PORT}`);
 });
