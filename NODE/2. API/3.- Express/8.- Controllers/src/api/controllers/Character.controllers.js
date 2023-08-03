@@ -128,7 +128,7 @@ const updateCharacter = async (req, res, next) => {
       // vamos a lanzar la respuesta, tenemos en cuenta que haya o no algun false, si hay algun false se lanza un 404
       let acc = 0;
       for (clave in test) {
-        test[clave] == false && acc++;
+        if (test[clave] == false) acc++;
       }
 
       if (acc > 0) {
