@@ -111,10 +111,13 @@ const updateCharacter = async (req, res, next) => {
         name: req.body?.name ? req.body?.name : characterById.name,
       };
       await Character.findByIdAndUpdate(id, customBody);
+      if (req.file?.path) {
+        deleteImgCloudinary(characterById.image);
+      }
 
       /// vamos a testear que se haya actualizado todo correctamente
       const updateNewCharacter = await Character.findById(id);
-      const elementUpdate = Object.keys(updateNewCharacter);
+      const elementUpdate = Object.keys(req.body);
       // ------------> acceder a la clave name updateNewCharacter["name"] updateNewCharacter.name
       let test = {};
       elementUpdate.forEach((item) => {
@@ -122,6 +125,12 @@ const updateCharacter = async (req, res, next) => {
           test[item] = true;
         } else {
           test[item] = false;
+        }
+
+        if (req.file) {
+          updateNewCharacter.image == req.file?.path
+            ? (test = { ...test, file: true })
+            : (test = { ...test, file: false });
         }
       });
 
