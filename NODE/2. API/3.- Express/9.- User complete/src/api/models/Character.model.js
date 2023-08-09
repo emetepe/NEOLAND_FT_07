@@ -23,6 +23,11 @@ const CharacterSchema = new Schema(
       required: false,
     },
     movies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
+    userFav: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "User",
+      default: [],
+    },
   },
   {
     timestamps: true,
