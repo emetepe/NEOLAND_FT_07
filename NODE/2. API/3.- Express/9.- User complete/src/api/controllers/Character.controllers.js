@@ -126,6 +126,12 @@ const updateCharacter = async (req, res, next) => {
         } else {
           test[item] = false;
         }
+
+        if (req.file) {
+          updateNewCharacter.image == req.file?.path
+            ? (test = { ...test, file: true })
+            : (test = { ...test, file: false });
+        }
       });
 
       // vamos a lanzar la respuesta, tenemos en cuenta que haya o no algun false, si hay algun false se lanza un 404
@@ -153,7 +159,7 @@ const updateCharacter = async (req, res, next) => {
   }
 };
 //! ---------------------------------------------------------------------
-//? -------------------------------POST ---------------------------------
+//? -------------------------------DELETE -------------------------------
 //! ---------------------------------------------------------------------
 
 module.exports = {

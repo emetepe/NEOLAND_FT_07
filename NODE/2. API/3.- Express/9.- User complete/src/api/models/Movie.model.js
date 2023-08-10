@@ -13,6 +13,11 @@ const MovieSchema = new mongoose.Schema(
     year: { type: Number, required: true },
     characters: [{ type: mongoose.Schema.Types.ObjectId, ref: "Character" }],
     view: { type: Boolean, default: false },
+    userFav: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "User",
+      default: [],
+    },
   },
   {
     timestamps: true,
