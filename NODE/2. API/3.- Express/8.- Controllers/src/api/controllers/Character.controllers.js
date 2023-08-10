@@ -114,7 +114,7 @@ const updateCharacter = async (req, res, next) => {
 
       /// vamos a testear que se haya actualizado todo correctamente
       const updateNewCharacter = await Character.findById(id);
-      const elementUpdate = Object.keys(updateNewCharacter);
+      const elementUpdate = Object.keys(req.body);
       // ------------> acceder a la clave name updateNewCharacter["name"] updateNewCharacter.name
       let test = {};
       elementUpdate.forEach((item) => {
@@ -123,6 +123,11 @@ const updateCharacter = async (req, res, next) => {
         } else {
           test[item] = false;
         }
+        if (req.file) {
+          updateCharacter.image == req.file?.path ? test = ({...test, file: true}) : {...test, file: false}
+        } 
+
+        
       });
 
       // vamos a lanzar la respuesta, tenemos en cuenta que haya o no algun false, si hay algun false se lanza un 404
